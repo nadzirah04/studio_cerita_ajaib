@@ -1206,9 +1206,13 @@ function svgPicture(scene) {
     encodeURIComponent(svg);
 }
 
+
+/* GUNAKAN GAMBAR KARTUN ASAL DARI GITHUB */
+
 SCENES.forEach(scene => {
-  scene.image = svgPicture(scene);
+  scene.image = "./" + scene.id + ".png";
 });
+
 
 /* ===================================
    KEADAAN CERITA
