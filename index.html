@@ -3,1337 +3,1176 @@
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Studio Cerita Ajaib | Didi & Friends</title>
-
 <style>
-:root {
-  --ink:#273854;
-  --blue:#3277db;
-  --pink:#ef619b;
-  --cream:#fffaf0;
-  --shadow:0 18px 45px #28163d40;
+:root{
+ --ink:#293956;--pink:#f064a0;--blue:#477dd5;
+ --cream:#fffaf1;--green:#18a968;
 }
-* {box-sizing:border-box}
-body {
-  margin:0;
-  min-height:100vh;
-  font-family:"Trebuchet MS",Arial,sans-serif;
-  color:var(--ink);
-  background:
-    linear-gradient(#271c4355,#271c4377),
-    url("./background.png") center center / cover fixed no-repeat,
-    linear-gradient(135deg,#60419d,#438fc9);
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ font-family:"Trebuchet MS",Arial,sans-serif;
+ color:var(--ink);
+ background:
+ linear-gradient(#28174755,#28174777),
+ url("./background.png") center/cover fixed no-repeat,
+ linear-gradient(135deg,#6e4cb3,#68b8df);
 }
-button,input {font:inherit}
-button {
-  cursor:pointer;
-  border:0;
-  border-radius:15px;
-  padding:12px 19px;
-  font-weight:900;
-  transition:transform .15s,filter .15s;
+button,input{font:inherit}
+button{
+ border:0;border-radius:15px;padding:12px 17px;
+ cursor:pointer;font-weight:900;
+ transition:transform .15s,filter .15s;
 }
-button:hover:not(:disabled) {
-  transform:translateY(-2px);
-  filter:brightness(1.05);
+button:hover:not(:disabled){
+ transform:translateY(-2px);filter:brightness(1.06)
 }
-button:disabled {opacity:.45;cursor:not-allowed}
-.primary {
-  color:white;
-  background:linear-gradient(#3ad77e,#079a4b);
-  box-shadow:0 5px 0 #08713c;
+button:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:linear-gradient(#42d98a,#0e9e56);color:white}
+.secondary{background:#fff3d7;color:#315080;border:2px solid #e8d19c}
+.pink{background:#ee619d;color:white}
+.blue{background:#4788e2;color:white}
+.danger{background:#d74e64;color:white}
+header{
+ max-width:1200px;margin:auto;padding:18px;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:12px;flex-wrap:wrap;
 }
-.secondary {
-  color:#244d87;
-  background:#fff5dd;
-  border:2px solid #e9d39e;
+.logo{
+ font-size:clamp(18px,3vw,27px);
+ font-weight:900;color:white;
+ text-shadow:0 3px 10px #0007;
 }
-.pink {color:white;background:linear-gradient(#ff91b8,#e84e8d)}
-.blue {color:white;background:linear-gradient(#69b6ff,#2877d6)}
-.danger {color:white;background:#d94d64}
-.big {padding:17px 26px;font-size:19px}
-.top,.shell,footer {position:relative;z-index:1}
-.top {
-  max-width:1250px;
-  margin:auto;
-  padding:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
+.logo small{
+ display:block;font-size:13px;color:#ffe59d;
+ margin-top:4px
 }
-.brand {
-  color:white;
-  font-size:clamp(18px,2.8vw,28px);
-  font-weight:900;
-  text-shadow:0 4px 10px #0007;
+header .controls{display:flex;gap:8px;flex-wrap:wrap}
+main{max-width:1200px;margin:auto;padding:10px 18px 45px}
+.view{display:none}
+.view.active{display:block}
+.hero,.panel,.book-paper,.heading{
+ background:#fffaf5f5;
+ border:4px solid #fff0cb;
+ border-radius:28px;
+ box-shadow:0 16px 40px #23143b44;
 }
-.brand small {
-  display:block;
-  color:#ffe99b;
-  font-size:14px;
-  margin-top:4px;
+.hero{
+ padding:clamp(25px,5vw,65px);
+ display:grid;grid-template-columns:1.2fr 1fr;
+ align-items:center;gap:30px;min-height:550px;
 }
-.shell {max-width:1250px;margin:auto;padding:10px 20px 45px}
-.view {display:none!important}
-.view.active {display:block!important}
-.hero,.card,.paper {
-  background:#fffaf5f5;
-  border:5px solid #fff1d0;
-  border-radius:30px;
-  box-shadow:var(--shadow);
+.hero h1{
+ font-size:clamp(35px,5vw,62px);
+ line-height:1.1;color:#394e91;
+ margin:15px 0;
 }
-.hero {
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  align-items:center;
-  gap:30px;
-  padding:clamp(25px,5vw,60px);
-  min-height:580px;
+.hero p{font-size:19px;line-height:1.7}
+.hero label{display:block;font-weight:900;margin:18px 0 8px}
+input[type=text]{
+ width:100%;max-width:380px;
+ padding:14px;border:2px solid #ccd8e9;
+ border-radius:14px;margin-bottom:17px;
 }
-.eyebrow {
-  font-size:14px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:#c0447c;
+.hero-art{text-align:center;font-size:145px}
+.steps{
+ background:#fff0c7;border:3px dashed #e6b85e;
+ border-radius:22px;padding:22px;
+ font-size:17px;line-height:2.2;
+ text-align:left;font-weight:900;
 }
-.hero h1 {
-  font-size:clamp(38px,5vw,64px);
-  line-height:1.1;
-  margin:15px 0;
-  color:#33498b;
+.heading{
+ padding:22px 27px;margin-bottom:17px;
+ display:flex;justify-content:space-between;
+ align-items:center;gap:15px;flex-wrap:wrap;
 }
-.hero p {font-size:19px;line-height:1.7}
-.hero label {display:block;font-weight:900;margin:22px 0 8px}
-input[type="text"] {
-  width:100%;
-  max-width:370px;
-  border:2px solid #d5ddec;
-  border-radius:14px;
-  padding:14px 16px;
-  margin-bottom:18px;
+.heading h2{font-size:clamp(24px,3vw,36px);margin:7px 0}
+.heading p{margin:0;line-height:1.5}
+.kicker{font-size:13px;font-weight:900;color:#c34b86}
+.tag{
+ display:inline-block;background:#ffe0a4;
+ padding:9px 16px;border-radius:25px;
+ font-weight:900;
 }
-.hero-side {text-align:center}
-.book-icon {
-  font-size:clamp(100px,14vw,185px);
-  filter:drop-shadow(0 12px 8px #0003);
+.progress{
+ height:14px;border-radius:15px;
+ background:#ffffffaa;margin-bottom:18px;
+ overflow:hidden;
 }
-.steps {
-  background:#fff0c8;
-  border:3px dashed #e8b95d;
-  padding:22px;
-  border-radius:22px;
-  text-align:left;
-  line-height:2.2;
-  font-weight:900;
-  max-width:370px;
-  margin:auto;
+.progress div{
+ height:100%;width:33.33%;
+ background:linear-gradient(90deg,#ffd06a,#ed6a9c);
+ transition:width .3s;
 }
-.hint {font-size:13px!important;line-height:1.6!important;color:#68768c!important}
-.section-head {
-  background:#fffaf3f5;
-  border-radius:24px;
-  padding:23px 28px;
-  margin-bottom:17px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+.two{
+ display:grid;grid-template-columns:1fr 1fr;
+ gap:18px;align-items:start;
 }
-.section-head h2 {font-size:clamp(25px,3.5vw,37px);margin:8px 0}
-.section-head p {margin:0;line-height:1.5}
-.counter,.tag {
-  display:inline-block;
-  background:#ffe2a1;
-  border-radius:30px;
-  padding:9px 16px;
-  font-weight:900;
+.panel{padding:23px}
+.panel h3{font-size:23px;margin-top:0}
+.gallery{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:10px;
 }
-.progress {
-  height:14px;
-  background:#ffffff99;
-  border-radius:20px;
-  overflow:hidden;
-  margin-bottom:18px;
+.scene-btn{
+ padding:7px;border:3px solid #e1e8f0;
+ background:white;color:var(--ink);
+ border-radius:17px;
 }
-.progress span {
-  display:block;
-  width:33.33%;
-  height:100%;
-  background:linear-gradient(90deg,#ffbd4c,#f26ca0);
-  transition:width .3s;
+.scene-btn.selected{
+ border-color:#ec5797;background:#ffe5f0;
+ box-shadow:0 0 0 3px #f8a7cc66;
 }
-.build-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+.scene-btn img{
+ width:100%;aspect-ratio:1.3;
+ object-fit:cover;border-radius:11px;
+ display:block;
 }
-.card {padding:24px}
-.card h3 {margin-top:0;font-size:24px}
-.image-choices {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:11px;
+.scene-btn span{display:block;padding:8px 0 4px}
+.story-box{
+ background:#fff0cf;border:2px solid #eed38e;
+ border-radius:19px;padding:19px;
 }
-.choice {
-  padding:7px;
-  background:white;
-  border:3px solid #e3e8f1;
-  border-radius:18px;
-  text-align:center;
-  color:var(--ink);
+.sentence{font-size:19px;line-height:2.5;margin:9px 0}
+.blank{
+ display:inline-block;min-width:95px;
+ padding:1px 9px;margin:0 3px;
+ border:2px solid #e4b04e;
+ background:white;color:#265ba1;
 }
-.choice.selected {
-  background:#ffe5f0;
-  border-color:#ee4d91;
-  box-shadow:0 0 0 3px #f7a5ca66;
+.bank{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+.word{
+ background:white;border:2px solid #c5d5f1;
+ color:#285da0;
 }
-.choice img {
-  width:100%;
-  aspect-ratio:1.3;
-  object-fit:cover;
-  border-radius:12px;
-  display:block;
+.word.used{background:#cef1db;border-color:#4fb881}
+.nav{
+ display:flex;justify-content:space-between;
+ gap:10px;flex-wrap:wrap;margin-top:22px;
 }
-.choice span {display:block;padding:8px 0 4px;font-size:15px}
-.story-preview {
-  background:#fff0cc;
-  border:2px solid #f1d38b;
-  border-radius:20px;
-  padding:20px;
+.book-layout{
+ display:grid;grid-template-columns:minmax(0,720px) 1fr;
+ gap:19px;align-items:start;
 }
-.sentences {margin-top:17px;font-size:20px;line-height:2.3}
-.sentence-row {margin:12px 0}
-.blank {
-  display:inline-block;
-  min-width:105px;
-  padding:1px 12px;
-  margin:0 4px;
-  border:2px solid #e4b14e;
-  border-radius:11px;
-  background:white;
-  color:#2256a0;
-  font-weight:900;
+.book-paper{
+ background:#fffdf5;padding:28px 33px;
+ min-height:640px;
 }
-.wordbank {display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}
-.word {background:white;color:#285a9e;border:2px solid #c8d8f4}
-.word.chosen {
-  background:#c8f2d8;
-  color:#17653b;
-  border-color:#32b46c;
+.book-top{
+ display:flex;justify-content:space-between;
+ border-bottom:3px dashed #e9d4a5;
+ padding-bottom:13px;font-size:23px;
+ font-weight:900;color:#9b53a7;
 }
-.help-row {
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:18px;
+.book-paper img{
+ width:100%;height:330px;
+ object-fit:cover;border-radius:20px;
+ margin:20px 0;
 }
-.nav {display:flex;justify-content:space-between;gap:12px;margin-top:22px}
-.book-layout {
-  display:grid;
-  grid-template-columns:minmax(0,730px) 1fr;
-  gap:20px;
-  align-items:start;
+.book-lines{font-size:22px;line-height:1.8}
+.book-author{text-align:right;color:#906d98;font-weight:900}
+.action-panel{
+ display:flex;flex-direction:column;
+ gap:14px;
 }
-.paper {background:#fffdf4;padding:28px 34px;min-height:650px}
-.paper-head {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:3px dashed #ead5a6;
-  padding-bottom:14px;
-  color:#9852a7;
-  font-size:25px;
-  font-weight:900;
+.action-panel p{line-height:1.6}
+.reading{
+ font-size:19px;line-height:1.85;
+ max-height:520px;overflow:auto;
 }
-.paper img {
-  display:block;
-  width:100%;
-  height:330px;
-  object-fit:cover;
-  border-radius:20px;
-  margin:20px 0;
+.reading h4{color:#9c54a4;margin-bottom:5px}
+.recorder{text-align:center}
+.mic{font-size:80px}
+.timer{font-size:43px;font-weight:900;margin:16px}
+.button-row{
+ display:flex;gap:10px;justify-content:center;
+ flex-wrap:wrap;margin:17px 0;
 }
-.book-sentences {font-size:23px;line-height:1.9}
-.book-author {
-  text-align:right;
-  margin-top:22px;
-  color:#8c6893;
-  font-weight:900;
+audio.player{width:100%;margin:13px 0}
+.note{font-size:13px;color:#6a788a;line-height:1.6}
+footer{
+ color:white;text-align:center;
+ padding:25px;text-shadow:0 2px 7px #0008;
 }
-.book-actions {
-  display:flex;
-  flex-direction:column;
-  gap:15px;
-  padding:24px;
-  border-radius:24px;
-  background:#fffaf5f5;
+#printPages{display:none}
+@media(max-width:850px){
+ .hero,.two,.book-layout{grid-template-columns:1fr}
+ .hero{min-height:0}
+ .hero-art{display:none}
+ .book-paper{min-height:0}
 }
-.record-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+@media(max-width:480px){
+ main{padding:10px}
+ .gallery{grid-template-columns:repeat(2,1fr)}
+ .panel,.book-paper{padding:16px}
+ .sentence{font-size:17px}
+ .book-lines{font-size:19px}
+ .book-paper img{height:240px}
+ header button{font-size:12px;padding:9px}
 }
-.reading-text {
-  max-height:490px;
-  overflow:auto;
-  font-size:19px;
-  line-height:1.8;
-}
-.reading-text h4 {color:#9653a2;margin-bottom:5px}
-.recorder {text-align:center}
-.mic-circle {font-size:85px}
-.timer {font-size:42px;font-weight:900;margin:15px 0}
-.record-buttons,.download-actions {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  justify-content:center;
-  margin:20px 0;
-}
-audio {width:100%;margin-top:15px}
-footer {
-  text-align:center;
-  padding:20px;
-  color:white;
-  text-shadow:0 2px 8px #0007;
-}
-#printPages {display:none}
-
-@media(max-width:850px) {
-  .hero,.build-grid,.book-layout,.record-grid {grid-template-columns:1fr}
-  .hero {min-height:0}
-  .hero-side {display:none}
-  .paper {min-height:0}
-  .paper img {height:250px}
-  .section-head {flex-wrap:wrap}
-}
-@media(max-width:480px) {
-  .top,.shell {padding:12px}
-  .image-choices {grid-template-columns:repeat(2,1fr)}
-  .card,.paper {padding:16px}
-  .sentences {font-size:17px}
-  .book-sentences {font-size:19px}
-  .brand {font-size:16px}
-  .top button {padding:9px;font-size:12px}
-}
-@media print {
-  @page {size:A4 portrait;margin:13mm}
-  body {background:white!important;color:#222}
-  .top,.shell,footer {display:none!important}
-  #printPages {display:block!important}
-  .print-page {
-    break-after:page;
-    page-break-after:always;
-    padding:8mm;
-    text-align:center;
-    font-family:Arial,sans-serif;
-  }
-  .print-page:last-child {break-after:auto;page-break-after:auto}
-  .print-page h1 {font-size:27pt;color:#7846a2}
-  .print-page img {
-    width:100%;
-    height:105mm;
-    object-fit:cover;
-    border-radius:8mm;
-  }
-  .print-page p {text-align:left;font-size:19pt;line-height:1.65}
-  .print-page .byline {text-align:right;font-size:13pt}
+@media print{
+ @page{size:A4 portrait;margin:12mm}
+ body{background:white!important}
+ header,main,footer{display:none!important}
+ #printPages{display:block!important}
+ .print-page{
+  font-family:Arial,sans-serif;
+  padding:8mm;break-after:page;
+ }
+ .print-page:last-child{break-after:auto}
+ .print-page h1{text-align:center;color:#78469b}
+ .print-page img{
+  width:100%;height:105mm;
+  object-fit:cover;border-radius:8mm;
+ }
+ .print-page p{font-size:19pt;line-height:1.6}
+ .print-page .byline{text-align:right;font-size:13pt}
 }
 </style>
 </head>
-
 <body>
 
-<header class="top">
-  <div class="brand">
-    📚 Studio Cerita Ajaib
-    <small>Didi & Friends • Penulis Cilik</small>
-  </div>
-  <button class="secondary" id="resetTop">
-    ↻ Cerita Baharu
+<header>
+ <div class="logo">
+  📚 Studio Cerita Ajaib
+  <small>Didi & Friends • Penulis Cilik</small>
+ </div>
+ <div class="controls">
+  <button class="secondary" id="musicBtn">
+   🔇 Hidupkan Muzik
   </button>
+  <button class="secondary" id="resetBtn">
+   ↻ Cerita Baharu
+  </button>
+ </div>
 </header>
 
-<main class="shell">
+<main>
 
-<!-- SELAMAT DATANG -->
 <section class="view active" id="welcome">
-  <div class="hero">
-    <div>
-      <div class="eyebrow">✨ SELAMAT DATANG, PENULIS CILIK!</div>
-      <h1>Jom cipta buku cerita sendiri!</h1>
-      <p>
-        Pilih gambar, lengkapkan ayat, baca cerita
-        dan rakam suara kamu.
-        Pak Atan sedia membantu!
-      </p>
-      <label for="author">Nama penulis (nama panggilan sahaja)</label>
-      <input id="author" type="text" maxlength="25"
-             placeholder="Contoh: Adik Didi">
-      <button class="primary big" id="startBtn">
-        📖 Mula Membuat Buku →
-      </button>
-      <p class="hint">
-        🔒 Jangan masukkan nama penuh atau maklumat peribadi.
-        Hasil disimpan pada peranti ini sehingga dimuat turun.
-      </p>
-    </div>
-    <div class="hero-side">
-      <div class="book-icon">📖✨</div>
-      <div class="steps">
-        🌈 1. Pilih gambar<br>
-        ✏️ 2. Lengkapkan ayat<br>
-        📖 3. Baca buku<br>
-        🎤 4. Rakam bacaan<br>
-        ⬇️ 5. Muat turun hasil
-      </div>
-    </div>
+ <div class="hero">
+  <div>
+   <div class="kicker">✨ SELAMAT DATANG, PENULIS CILIK!</div>
+   <h1>Jom cipta buku cerita sendiri!</h1>
+   <p>
+    Pilih gambar, lengkapkan ayat,
+    hasilkan buku digital dan rakam
+    bacaan kamu sendiri!
+   </p>
+   <label for="author">Nama panggilan penulis</label>
+   <input type="text" id="author"
+          maxlength="25" placeholder="Contoh: Adik Didi">
+   <div>
+    <button class="primary" id="startBtn">
+     📖 Mula Membuat Buku →
+    </button>
+   </div>
+   <p class="note">
+    Gunakan nama panggilan sahaja.
+    Jangan masukkan maklumat peribadi.
+   </p>
   </div>
+  <div class="hero-art">
+   📖✨
+   <div class="steps">
+    🌈 1. Pilih gambar<br>
+    ✏️ 2. Lengkapkan ayat<br>
+    📚 3. Baca buku cerita<br>
+    🎤 4. Rakam suara<br>
+    ⬇️ 5. Muat turun hasil
+   </div>
+  </div>
+ </div>
 </section>
 
-<!-- BINA CERITA -->
 <section class="view" id="builder">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">LANGKAH 1 & 2</div>
-      <h2>Bina Buku Cerita Kamu</h2>
-      <p>
-        Pilih satu gambar untuk halaman ini.
-        Kemudian pilih perkataan yang sesuai.
-      </p>
-    </div>
-    <span class="counter" id="pageCounter">Halaman 1 / 3</span>
+ <div class="heading">
+  <div>
+   <div class="kicker">LANGKAH 1 & 2</div>
+   <h2>🌈 Bina Buku Cerita Kamu</h2>
+   <p>
+    Pilih gambar dan lengkapkan
+    tiga ayat untuk setiap halaman.
+   </p>
+  </div>
+  <span class="tag" id="pageCounter">Halaman 1 / 3</span>
+ </div>
+
+ <div class="progress"><div id="progressFill"></div></div>
+
+ <div class="two">
+  <div class="panel">
+   <h3>🖼️ Pilih Gambar</h3>
+   <div class="gallery" id="gallery"></div>
   </div>
 
-  <div class="progress"><span id="progressBar"></span></div>
+  <div class="panel">
+   <h3>✏️ Lengkapkan Ayat</h3>
+   <div class="story-box">
+    <span class="tag" id="sceneLabel">
+     Pilih gambar dahulu
+    </span>
+    <div id="sentences"></div>
+   </div>
 
-  <div class="build-grid">
-    <div class="card">
-      <h3>🖼️ Pilih Gambar</h3>
-      <div class="image-choices" id="imageChoices"></div>
-    </div>
+   <h3 style="margin-top:24px">🔤 Bank Perkataan</h3>
+   <div class="bank" id="wordBank"></div>
 
-    <div class="card">
-      <h3>✏️ Lengkapkan Ayat</h3>
-      <div class="story-preview">
-        <span class="tag" id="selectedLabel">
-          Pilih gambar dahulu
-        </span>
-        <div class="sentences" id="sentenceArea"></div>
-      </div>
+   <button class="secondary" id="clearBtn">
+    ↻ Padam Jawapan
+   </button>
 
-      <h3 style="margin-top:22px">🔤 Bank Perkataan</h3>
-      <div class="wordbank" id="wordBank"></div>
-
-      <div class="help-row">
-        <button class="secondary" id="hearSentence">
-          🔊 Dengar Ayat
-        </button>
-        <button class="secondary" id="clearWords">
-          ↻ Padam Jawapan
-        </button>
-      </div>
-
-      <div class="nav">
-        <button class="secondary" id="prevBuild">← Sebelum</button>
-        <button class="primary" id="nextBuild">Seterusnya →</button>
-      </div>
-    </div>
+   <div class="nav">
+    <button class="secondary" id="prevBuild">
+     ← Sebelum
+    </button>
+    <button class="primary" id="nextBuild">
+     Seterusnya →
+    </button>
+   </div>
   </div>
+ </div>
 </section>
 
-<!-- BUKU DIGITAL -->
 <section class="view" id="bookView">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">LANGKAH 3</div>
-      <h2>📖 Buku Cerita Saya</h2>
-      <p>Tahniah! Kamu telah menghasilkan sebuah buku cerita.</p>
-    </div>
+ <div class="heading">
+  <div>
+   <div class="kicker">LANGKAH 3</div>
+   <h2>📖 Buku Cerita Saya</h2>
+   <p>
+    Tahniah! Kamu berjaya menghasilkan
+    buku cerita sendiri!
+   </p>
+  </div>
+ </div>
+
+ <div class="book-layout">
+  <div class="book-paper">
+   <div class="book-top">
+    <span>✨ Cerita Saya</span>
+    <span id="bookNumber">1 / 3</span>
+   </div>
+
+   <img id="bookImage" alt="Gambar cerita">
+   <div class="book-lines" id="bookLines"></div>
+   <div class="book-author" id="bookAuthor"></div>
+
+   <div class="nav">
+    <button class="secondary" id="prevBook">
+     ← Halaman Sebelum
+    </button>
+    <button class="primary" id="nextBook">
+     Halaman Seterusnya →
+    </button>
+   </div>
   </div>
 
-  <div class="book-layout">
-    <div class="paper">
-      <div class="paper-head">
-        <span>✨ Cerita Saya</span>
-        <span id="bookPageNo">1 / 3</span>
-      </div>
-      <img id="bookImage" alt="Gambar cerita">
-      <div class="book-sentences" id="bookSentences"></div>
-      <div class="book-author" id="bookAuthor"></div>
-
-      <div class="nav">
-        <button class="secondary" id="prevBook">
-          ← Halaman Sebelum
-        </button>
-        <button class="primary" id="nextBook">
-          Halaman Seterusnya →
-        </button>
-      </div>
-    </div>
-
-    <div class="book-actions">
-      <h3>🌟 Buku Kamu Sudah Siap!</h3>
-      <p>Selak buku cerita kamu dan baca setiap halaman.</p>
-
-      <button class="blue" id="readAloud">
-        🔊 Dengar Bacaan
-      </button>
-      <button class="pink" id="goRecord">
-        🎤 Rakam Bacaan Saya
-      </button>
-      <button class="secondary" id="editStory">
-        ✏️ Ubah Cerita
-      </button>
-      <button class="primary" id="printBook">
-        ⬇️ Muat Turun Buku (PDF)
-      </button>
-
-      <p class="hint">
-        Pilih "Save as PDF" apabila tetingkap cetakan dibuka.
-      </p>
-    </div>
+  <div class="panel action-panel">
+   <h3>🌟 Hebat, Penulis Cilik!</h3>
+   <p>
+    Selak halaman buku dan baca
+    cerita yang telah kamu hasilkan.
+   </p>
+   <button class="pink" id="goRecord">
+    🎤 Rakam Bacaan Saya
+   </button>
+   <button class="secondary" id="editStory">
+    ✏️ Ubah Cerita
+   </button>
+   <button class="primary" id="printBook">
+    ⬇️ Muat Turun Buku (PDF)
+   </button>
+   <p class="note">
+    Pilih "Save as PDF" dalam
+    tetingkap cetakan.
+   </p>
   </div>
+ </div>
 </section>
 
-<!-- RAKAMAN MURID -->
 <section class="view" id="recordView">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">LANGKAH 4 & 5</div>
-      <h2>🎤 Studio Rakaman Bacaan</h2>
-      <p>
-        Baca cerita kamu dengan jelas.
-        Kemudian dengar semula rakaman.
-      </p>
-    </div>
+ <div class="heading">
+  <div>
+   <div class="kicker">LANGKAH 4 & 5</div>
+   <h2>🎤 Studio Rakaman Bacaan</h2>
+   <p>
+    Baca cerita kamu dengan jelas.
+    Kemudian dengar semula suara kamu!
+   </p>
+  </div>
+ </div>
+
+ <div class="two">
+  <div class="panel">
+   <h3>📚 Cerita Untuk Dibaca</h3>
+   <div class="reading" id="readingText"></div>
+   <p class="note">
+    Baca satu ayat demi satu ayat.
+    Berhenti sebentar pada tanda noktah.
+   </p>
   </div>
 
-  <div class="record-grid">
-    <div class="card">
-      <h3>📚 Cerita Untuk Dibaca</h3>
-      <div class="reading-text" id="readingText"></div>
+  <div class="panel recorder">
+   <div class="mic">🎙️</div>
+   <h3>Rakam Suara Kamu</h3>
+   <div class="timer" id="timer">00:00</div>
 
-      <p class="hint">
-        💡 Baca satu ayat demi satu ayat.
-        Berhenti sebentar apabila melihat tanda noktah.
-        Kamu boleh mendengar contoh bacaan automatik
-        pada halaman buku digital.
-      </p>
-    </div>
+   <div class="button-row">
+    <button class="primary" id="startRecord">
+     ● Mula Rakam
+    </button>
+    <button class="danger" id="stopRecord" disabled>
+     ■ Henti
+    </button>
+   </div>
 
-    <div class="card recorder">
-      <div class="mic-circle">🎙️</div>
-      <h3>Rakam Suara Kamu</h3>
-      <div class="timer" id="timer">00:00</div>
+   <p id="recordStatus">
+    Tekan Mula Rakam apabila bersedia.
+   </p>
 
-      <div class="record-buttons">
-        <button class="primary" id="startRecord">
-          ● Mula Rakam
-        </button>
-        <button class="danger" id="stopRecord" disabled>
-          ■ Henti
-        </button>
-      </div>
+   <audio class="player" id="recordPlayer" controls></audio>
 
-      <p id="recordStatus">
-        Tekan "Mula Rakam" apabila kamu sudah bersedia.
-      </p>
+   <div class="button-row">
+    <button class="blue" id="downloadAudio" disabled>
+     ⬇️ Muat Turun Suara
+    </button>
+    <button class="primary" id="downloadBook">
+     📖 Muat Turun Buku
+    </button>
+   </div>
 
-      <audio id="audioPlayer" controls></audio>
+   <button class="secondary" id="backBook">
+    ← Kembali ke Buku
+   </button>
 
-      <div class="download-actions">
-        <button class="blue" id="downloadAudio" disabled>
-          ⬇️ Muat Turun Suara
-        </button>
-        <button class="primary" id="downloadBook">
-          📖 Muat Turun Buku
-        </button>
-      </div>
-
-      <button class="secondary" id="backBook">
-        ← Kembali ke Buku
-      </button>
-
-      <p class="hint">
-        Serahkan fail buku dan rakaman kepada guru
-        melalui saluran sekolah yang ditetapkan.
-      </p>
-    </div>
+   <p class="note">
+    Muzik latar dihentikan semasa
+    rakaman supaya suara kamu jelas.
+   </p>
   </div>
+ </div>
 </section>
 
 </main>
 
 <footer>
-  ✨ Studio Cerita Ajaib Didi & Friends ✨
-  <br>Belajar • Membaca • Mencipta
+ ✨ Studio Cerita Ajaib Didi & Friends ✨
+ <br>Belajar • Membaca • Mencipta
 </footer>
 
 <div id="printPages"></div>
 
+<!-- MUZIK DAN KESAN BUNYI -->
+<audio id="bgMusic" src="./muzik-latar.wav"
+       loop preload="auto"></audio>
+
 <script>
 "use strict";
 
-/* ===================================
-   GAMBAR ASAL DALAM REPOSITORY GITHUB
-=================================== */
+const $ = id => document.getElementById(id);
 
-const IMAGE_BASE =
-  "https://nadzirah04.github.io/studio_cerita_ajaib/";
-
-const GAMBAR_ASAL = {
-  rumah: IMAGE_BASE + "rumah.png",
-  pantai: IMAGE_BASE + "pantai.png",
-  taman: IMAGE_BASE + "taman.png",
-  sekolah: IMAGE_BASE + "sekolah.png",
-  bunga: IMAGE_BASE + "bunga.png",
-  pokok: IMAGE_BASE + "pokok.png",
-  pondok: IMAGE_BASE + "pondok.png",
-  kolam: IMAGE_BASE + "kolam.png",
-  kebun: IMAGE_BASE + "kebun.png"
-};
-
-/* ===================================
-   DATA CERITA
-=================================== */
+const BASE =
+ "https://nadzirah04.github.io/studio_cerita_ajaib/";
 
 const SCENES = [
-  {
-    id:"rumah",name:"Rumah",icon:"🏡",
-    sentences:[
-      ["Ini ialah sebuah","rumah","yang cantik."],
-      ["Rumah itu mempunyai","pintu","berwarna coklat."],
-      ["Saya suka bermain di","halaman","rumah."]
-    ],
-    words:["rumah","pintu","halaman","laut","buku","ikan"]
-  },
-  {
-    id:"pantai",name:"Pantai",icon:"🏖️",
-    sentences:[
-      ["Saya pergi ke","pantai","bersama keluarga."],
-      ["Saya bermain dengan","pasir","yang lembut."],
-      ["Saya melihat","ombak","di laut."]
-    ],
-    words:["pantai","pasir","ombak","pokok","meja","kelas"]
-  },
-  {
-    id:"taman",name:"Taman",icon:"🛝",
-    sentences:[
-      ["Saya bermain di","taman","permainan."],
-      ["Di situ ada sebuah","gelongsor","yang besar."],
-      ["Saya berasa sangat","gembira","hari ini."]
-    ],
-    words:["taman","gelongsor","gembira","laut","kasut","ikan"]
-  },
-  {
-    id:"sekolah",name:"Sekolah",icon:"🏫",
-    sentences:[
-      ["Saya pergi ke","sekolah","pada waktu pagi."],
-      ["Saya membawa sebuah","beg","berwarna biru."],
-      ["Saya belajar bersama","kawan","di kelas."]
-    ],
-    words:["sekolah","beg","kawan","bunga","pasir","laut"]
-  },
-  {
-    id:"bunga",name:"Bunga",icon:"🌺",
-    sentences:[
-      ["Saya melihat sekuntum","bunga","yang cantik."],
-      ["Bunga itu berwarna","merah","dan segar."],
-      ["Seekor","rama-rama","hinggap pada bunga."]
-    ],
-    words:["bunga","merah","rama-rama","kerusi","kasut","buku"]
-  },
-  {
-    id:"pokok",name:"Pokok",icon:"🌳",
-    sentences:[
-      ["Di taman ada sebatang","pokok","yang besar."],
-      ["Daun pokok itu berwarna","hijau","."],
-      ["Seekor","burung","hinggap pada dahan."]
-    ],
-    words:["pokok","hijau","burung","laut","pensel","pintu"]
-  },
-  {
-    id:"pondok",name:"Pondok",icon:"🛖",
-    sentences:[
-      ["Pak Atan duduk di sebuah","pondok","."],
-      ["Pondok itu diperbuat daripada","kayu","."],
-      ["Pak Atan berehat di atas","bangku","."]
-    ],
-    words:["pondok","kayu","bangku","laut","ikan","beg"]
-  },
-  {
-    id:"kolam",name:"Kolam",icon:"🐟",
-    sentences:[
-      ["Saya melihat sebuah","kolam","di taman."],
-      ["Di dalam kolam ada banyak","ikan","."],
-      ["Air kolam itu sangat","jernih","."]
-    ],
-    words:["kolam","ikan","jernih","kereta","pintu","buku"]
-  },
-  {
-    id:"kebun",name:"Kebun",icon:"🥕",
-    sentences:[
-      ["Pak Atan pergi ke","kebun","pada waktu pagi."],
-      ["Dia menanam","sayur","di atas tanah."],
-      ["Pak Atan membawa sebuah","bakul","."]
-    ],
-    words:["kebun","sayur","bakul","laut","kasut","kerusi"]
-  }
+ {
+  id:"rumah",name:"Rumah",icon:"🏡",
+  sentences:[
+   ["Ini ialah sebuah","rumah","yang cantik."],
+   ["Rumah itu mempunyai","pintu","berwarna coklat."],
+   ["Saya suka bermain di","halaman","rumah."]
+  ],
+  words:["rumah","pintu","halaman","laut","buku","ikan"]
+ },
+ {
+  id:"pantai",name:"Pantai",icon:"🏖️",
+  sentences:[
+   ["Saya pergi ke","pantai","bersama keluarga."],
+   ["Saya bermain dengan","pasir","yang lembut."],
+   ["Saya melihat","ombak","di laut."]
+  ],
+  words:["pantai","pasir","ombak","pokok","meja","kelas"]
+ },
+ {
+  id:"taman",name:"Taman",icon:"🛝",
+  sentences:[
+   ["Saya bermain di","taman","permainan."],
+   ["Di situ ada sebuah","gelongsor","yang besar."],
+   ["Saya berasa sangat","gembira","hari ini."]
+  ],
+  words:["taman","gelongsor","gembira","laut","kasut","ikan"]
+ },
+ {
+  id:"sekolah",name:"Sekolah",icon:"🏫",
+  sentences:[
+   ["Saya pergi ke","sekolah","pada waktu pagi."],
+   ["Saya membawa sebuah","beg","berwarna biru."],
+   ["Saya belajar bersama","kawan","di kelas."]
+  ],
+  words:["sekolah","beg","kawan","bunga","pasir","laut"]
+ },
+ {
+  id:"bunga",name:"Bunga",icon:"🌺",
+  sentences:[
+   ["Saya melihat sekuntum","bunga","yang cantik."],
+   ["Bunga itu berwarna","merah","dan segar."],
+   ["Seekor","rama-rama","hinggap pada bunga."]
+  ],
+  words:["bunga","merah","rama-rama","kerusi","kasut","buku"]
+ },
+ {
+  id:"pokok",name:"Pokok",icon:"🌳",
+  sentences:[
+   ["Di taman ada sebatang","pokok","yang besar."],
+   ["Daun pokok itu berwarna","hijau","."],
+   ["Seekor","burung","hinggap pada dahan."]
+  ],
+  words:["pokok","hijau","burung","laut","pensel","pintu"]
+ },
+ {
+  id:"pondok",name:"Pondok",icon:"🛖",
+  sentences:[
+   ["Pak Atan duduk di sebuah","pondok","."],
+   ["Pondok itu diperbuat daripada","kayu","."],
+   ["Pak Atan berehat di atas","bangku","."]
+  ],
+  words:["pondok","kayu","bangku","laut","ikan","beg"]
+ },
+ {
+  id:"kolam",name:"Kolam",icon:"🐟",
+  sentences:[
+   ["Saya melihat sebuah","kolam","di taman."],
+   ["Di dalam kolam ada banyak","ikan","."],
+   ["Air kolam itu sangat","jernih","."]
+  ],
+  words:["kolam","ikan","jernih","kereta","pintu","buku"]
+ },
+ {
+  id:"kebun",name:"Kebun",icon:"🥕",
+  sentences:[
+   ["Pak Atan pergi ke","kebun","pada waktu pagi."],
+   ["Dia menanam","sayur","di atas tanah."],
+   ["Pak Atan membawa sebuah","bakul","."]
+  ],
+  words:["kebun","sayur","bakul","laut","kasut","kerusi"]
+ }
 ];
 
-SCENES.forEach(scene => {
-  scene.image = GAMBAR_ASAL[scene.id];
+SCENES.forEach(s => {
+ s.image = BASE + s.id + ".png";
 });
 
-/* ===================================
-   DATA MURID
-=================================== */
+/* DATA CERITA */
 
-const STORAGE_KEY = "studio-cerita-ajaib-v4";
+const KEY = "studio-cerita-ajaib-v5";
 
-function emptyPages() {
-  return [
-    {scene:null,answers:[null,null,null]},
-    {scene:null,answers:[null,null,null]},
-    {scene:null,answers:[null,null,null]}
-  ];
+function newPages(){
+ return Array.from({length:3},()=>({
+  scene:null,
+  answers:[null,null,null]
+ }));
 }
 
+let pages = newPages();
 let author = "";
-let pages = emptyPages();
 let buildIndex = 0;
 let bookIndex = 0;
 
-let recorder = null;
-let chunks = [];
-let audioBlob = null;
-let audioURL = null;
-let recordStart = 0;
-let timerInterval = null;
-let micStream = null;
-
-const $ = id => document.getElementById(id);
-
-function escapeHTML(text) {
-  return String(text).replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[c]));
+function save(){
+ try{
+  localStorage.setItem(KEY,JSON.stringify({author,pages}));
+ }catch(e){}
 }
 
-function saveDraft() {
-  try {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({author,pages})
-    );
-  } catch(e) {
-    console.warn("Draf tidak dapat disimpan.",e);
-  }
+function load(){
+ try{
+  const d = JSON.parse(localStorage.getItem(KEY));
+  if(!d || !Array.isArray(d.pages) || d.pages.length!==3) return;
+  author = typeof d.author==="string" ? d.author : "";
+  pages = d.pages.map(p=>({
+   scene:SCENES.some(s=>s.id===p.scene)?p.scene:null,
+   answers:Array.isArray(p.answers)
+    ? [0,1,2].map(i=>typeof p.answers[i]==="string"
+       ? p.answers[i]:null)
+    : [null,null,null]
+  }));
+  $("author").value=author;
+ }catch(e){}
 }
 
-function loadDraft() {
-  try {
-    const data = JSON.parse(
-      localStorage.getItem(STORAGE_KEY)
-    );
-
-    if (!data || !Array.isArray(data.pages)) return;
-
-    author = typeof data.author === "string"
-      ? data.author : "";
-
-    if (data.pages.length === 3) {
-      pages = data.pages.map(p => ({
-        scene:SCENES.some(s => s.id === p.scene)
-          ? p.scene : null,
-        answers:Array.isArray(p.answers)
-          ? [0,1,2].map(i =>
-              typeof p.answers[i] === "string"
-                ? p.answers[i] : null
-            )
-          : [null,null,null]
-      }));
-    }
-
-    $("author").value = author;
-  } catch(e) {
-    console.warn("Draf tidak dapat dibaca.",e);
-  }
+function sceneAt(i){
+ return SCENES.find(s=>s.id===pages[i].scene);
 }
 
-function getScene(index) {
-  return SCENES.find(s => s.id === pages[index].scene);
+function linesAt(i){
+ const scene=sceneAt(i);
+ if(!scene)return [];
+ return scene.sentences.map((parts,j)=>{
+  const word=pages[i].answers[j] || "________";
+  return parts[0]+" "+word+
+   (parts[2].startsWith(".")?"":" ")+parts[2];
+ });
 }
 
-function showView(id) {
-  if ("speechSynthesis" in window) speechSynthesis.cancel();
-
-  document.querySelectorAll(".view").forEach(v => {
-    v.classList.toggle("active",v.id === id);
-  });
-
-  window.scrollTo({top:0,behavior:"instant"});
+function complete(i){
+ const scene=sceneAt(i);
+ return !!scene && scene.sentences.every(
+  (parts,j)=>pages[i].answers[j]===parts[1]
+ );
 }
 
-function getLines(index,filled=true) {
-  const scene = getScene(index);
-  if (!scene) return [];
-
-  return scene.sentences.map((parts,i) => {
-    const word = filled
-      ? (pages[index].answers[i] || "________")
-      : "________";
-
-    return parts[0] + " " + word +
-      (parts[2].startsWith(".") ? "" : " ") +
-      parts[2];
-  });
+function allComplete(){
+ return [0,1,2].every(complete);
 }
 
-function pageComplete(index) {
-  const scene = getScene(index);
-
-  return !!scene &&
-    scene.sentences.every((parts,i) =>
-      pages[index].answers[i] === parts[1]
-    );
+function safe(t){
+ return String(t).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
-function allComplete() {
-  return [0,1,2].every(pageComplete);
+function show(id){
+ document.querySelectorAll(".view").forEach(v=>{
+  v.classList.toggle("active",v.id===id);
+ });
+ window.scrollTo(0,0);
 }
 
-/* ===================================
-   BINA CERITA
-=================================== */
+/* MUZIK DAN KESAN BUNYI */
 
-function renderBuilder() {
-  $("pageCounter").textContent =
-    "Halaman " + (buildIndex+1) + " / 3";
+const bg=$("bgMusic");
+bg.volume=0.17;
 
-  $("progressBar").style.width =
-    ((buildIndex+1)/3*100) + "%";
+let musicWanted=true;
+let recording=false;
+let musicBeforeRecord=false;
 
-  const current = pages[buildIndex];
-  const scene = getScene(buildIndex);
+const effects={
+ choose:"pilih-gambar.wav",
+ correct:"jawapan-betul.wav",
+ page:"tukar-halaman.wav",
+ finish:"siap-buku.wav"
+};
 
-  $("imageChoices").innerHTML = "";
+let activeEffects=[];
 
-  SCENES.forEach(item => {
-    const button = document.createElement("button");
-
-    button.className =
-      "choice" +
-      (current.scene === item.id ? " selected" : "");
-
-    const img = document.createElement("img");
-    img.src = item.image;
-    img.alt = "Gambar " + item.name;
-    img.loading = "lazy";
-
-    img.onerror = () => {
-      img.style.display = "none";
-      button.title =
-        "Gambar tidak ditemui: " + item.id + ".png";
-    };
-
-    const label = document.createElement("span");
-    label.textContent = item.icon + " " + item.name;
-
-    button.append(img,label);
-
-    button.onclick = () => {
-      current.scene = item.id;
-      current.answers = [null,null,null];
-      saveDraft();
-      renderBuilder();
-    };
-
-    $("imageChoices").appendChild(button);
-  });
-
-  $("sentenceArea").innerHTML = "";
-  $("wordBank").innerHTML = "";
-
-  if (!scene) {
-    $("selectedLabel").textContent =
-      "Pilih satu gambar dahulu";
-
-    $("sentenceArea").textContent =
-      "Ayat cerita akan muncul selepas kamu memilih gambar.";
-
-    $("nextBuild").disabled = true;
-    $("prevBuild").disabled = buildIndex === 0;
-    return;
-  }
-
-  $("selectedLabel").textContent =
-    scene.icon + " Cerita: " + scene.name;
-
-  scene.sentences.forEach((parts,i) => {
-    const row = document.createElement("div");
-    row.className = "sentence-row";
-
-    const before = document.createTextNode(
-      (i+1) + ". " + parts[0] + " "
-    );
-
-    const blank = document.createElement("button");
-    blank.className = "blank";
-    blank.textContent = current.answers[i] || "________";
-    blank.title = "Tekan untuk kosongkan jawapan";
-
-    blank.onclick = () => {
-      current.answers[i] = null;
-      saveDraft();
-      renderBuilder();
-    };
-
-    const after = document.createTextNode(
-      (parts[2].startsWith(".") ? "" : " ") +
-      parts[2]
-    );
-
-    row.append(before,blank,after);
-    $("sentenceArea").appendChild(row);
-  });
-
-  scene.words.forEach(word => {
-    const button = document.createElement("button");
-    button.className = "word";
-
-    const used = current.answers.includes(word);
-    if (used) button.classList.add("chosen");
-
-    button.textContent = word;
-
-    button.onclick = () => {
-      const expectedIndex =
-        scene.sentences.findIndex(
-          (parts,i) =>
-            parts[1] === word &&
-            current.answers[i] !== word
-        );
-
-      if (expectedIndex === -1) {
-        speak("Cuba pilih perkataan yang lain.");
-        return;
-      }
-
-      current.answers[expectedIndex] = word;
-      saveDraft();
-      renderBuilder();
-    };
-
-    $("wordBank").appendChild(button);
-  });
-
-  $("nextBuild").disabled = !pageComplete(buildIndex);
-  $("prevBuild").disabled = buildIndex === 0;
-
-  $("nextBuild").textContent =
-    buildIndex === 2
-      ? "📖 Siapkan Buku"
-      : "Seterusnya →";
+function stopEffects(){
+ activeEffects.forEach(a=>{
+  a.pause();
+  a.currentTime=0;
+ });
+ activeEffects=[];
 }
 
-/* ===================================
-   BUKU DIGITAL
-=================================== */
+function sound(name){
+ if(!musicWanted || recording)return;
+ const file=effects[name];
+ if(!file)return;
 
-function renderBook() {
-  const scene = getScene(bookIndex);
-  if (!scene) return;
-
-  $("bookPageNo").textContent =
-    (bookIndex+1) + " / 3";
-
-  $("bookImage").src = scene.image;
-  $("bookImage").alt = scene.name;
-
-  $("bookSentences").innerHTML =
-    getLines(bookIndex).map(
-      line => "<p>" + escapeHTML(line) + "</p>"
-    ).join("");
-
-  $("bookAuthor").textContent =
-    "Penulis: " + (author || "Penulis Cilik");
-
-  $("prevBook").disabled = bookIndex === 0;
-  $("nextBook").disabled = bookIndex === 2;
+ const a=new Audio("./"+file);
+ a.volume=0.35;
+ activeEffects.push(a);
+ a.onended=()=>{
+  activeEffects=activeEffects.filter(x=>x!==a);
+ };
+ a.play().catch(()=>{});
 }
 
-/* ===================================
-   BACAAN SUARA AUTOMATIK
-=================================== */
+function refreshMusicButton(){
+ $("musicBtn").textContent=musicWanted
+  ? "🔊 Matikan Muzik"
+  : "🔇 Hidupkan Muzik";
+}
 
-function speak(text) {
-  if (!("speechSynthesis" in window)) {
-    alert("Browser ini tidak menyokong bacaan automatik.");
-    return;
-  }
+function playMusic(){
+ if(!musicWanted || recording)return;
+ bg.play().catch(()=>{
+  $("musicBtn").textContent="🔇 Hidupkan Muzik";
+ });
+}
 
-  speechSynthesis.cancel();
+function pauseMusic(){
+ bg.pause();
+ stopEffects();
+}
 
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "ms-MY";
-  utterance.rate = .85;
-  utterance.pitch = 1.05;
+$("musicBtn").onclick=()=>{
+ if(recording)return;
 
-  const voices = speechSynthesis.getVoices();
-  const malayVoice = voices.find(v =>
-    v.lang.toLowerCase().startsWith("ms")
+ musicWanted=!musicWanted;
+ refreshMusicButton();
+
+ if(musicWanted){
+  playMusic();
+ }else{
+  pauseMusic();
+ }
+};
+
+refreshMusicButton();
+
+/* PILIH GAMBAR DAN BINA AYAT */
+
+function renderBuilder(){
+ const page=pages[buildIndex];
+ const scene=sceneAt(buildIndex);
+
+ $("pageCounter").textContent=
+  "Halaman "+(buildIndex+1)+" / 3";
+
+ $("progressFill").style.width=
+  ((buildIndex+1)/3*100)+"%";
+
+ $("gallery").innerHTML="";
+
+ SCENES.forEach(item=>{
+  const btn=document.createElement("button");
+  btn.className="scene-btn"+
+   (page.scene===item.id?" selected":"");
+
+  const img=document.createElement("img");
+  img.src=item.image;
+  img.alt="Gambar "+item.name;
+  img.loading="lazy";
+  img.onerror=()=>{img.style.display="none"};
+
+  const label=document.createElement("span");
+  label.textContent=item.icon+" "+item.name;
+
+  btn.append(img,label);
+
+  btn.onclick=()=>{
+   page.scene=item.id;
+   page.answers=[null,null,null];
+   save();
+   sound("choose");
+   renderBuilder();
+  };
+
+  $("gallery").appendChild(btn);
+ });
+
+ $("sentences").innerHTML="";
+ $("wordBank").innerHTML="";
+
+ $("prevBuild").disabled=buildIndex===0;
+
+ if(!scene){
+  $("sceneLabel").textContent="Pilih gambar dahulu";
+  $("sentences").textContent=
+   "Ayat akan muncul selepas kamu memilih gambar.";
+  $("nextBuild").disabled=true;
+  return;
+ }
+
+ $("sceneLabel").textContent=
+  scene.icon+" Cerita: "+scene.name;
+
+ scene.sentences.forEach((parts,i)=>{
+  const row=document.createElement("div");
+  row.className="sentence";
+
+  const before=document.createTextNode(
+   (i+1)+". "+parts[0]+" "
   );
 
-  if (malayVoice) utterance.voice = malayVoice;
+  const blank=document.createElement("button");
+  blank.className="blank";
+  blank.textContent=page.answers[i]||"________";
 
-  speechSynthesis.speak(utterance);
-}
+  blank.onclick=()=>{
+   page.answers[i]=null;
+   save();
+   renderBuilder();
+  };
 
-/* ===================================
-   TEKS UNTUK RAKAMAN MURID
-=================================== */
+  const after=document.createTextNode(
+   (parts[2].startsWith(".")?"":" ")+parts[2]
+  );
 
-function renderReadingText() {
-  $("readingText").innerHTML =
-    [0,1,2].map(i => `
-      <h4>Halaman ${i+1}</h4>
-      ${getLines(i).map(line =>
-        "<p>" + escapeHTML(line) + "</p>"
-      ).join("")}
-    `).join("");
-}
+  row.append(before,blank,after);
+  $("sentences").appendChild(row);
+ });
 
-/* ===================================
-   RAKAM SUARA MURID
-=================================== */
+ scene.words.forEach(word=>{
+  const btn=document.createElement("button");
+  btn.className="word";
+  btn.textContent=word;
 
-function formatTime(seconds) {
-  const m = String(
-    Math.floor(seconds/60)
-  ).padStart(2,"0");
+  if(page.answers.includes(word)){
+   btn.classList.add("used");
+  }
 
-  const s = String(
-    seconds%60
-  ).padStart(2,"0");
+  btn.onclick=()=>{
+   const i=scene.sentences.findIndex(
+    (parts,j)=>
+     parts[1]===word && page.answers[j]!==word
+   );
 
-  return m + ":" + s;
-}
-
-async function startRecording() {
-  if (!navigator.mediaDevices ||
-      !navigator.mediaDevices.getUserMedia ||
-      typeof MediaRecorder === "undefined") {
-    alert(
-      "Rakaman tidak disokong. Buka website " +
-      "melalui HTTPS menggunakan Chrome atau Edge."
-    );
+   if(i===-1){
+    // Perkataan tidak sesuai:
+    // kekalkan jawapan sedia ada.
+    btn.style.borderColor="#e77c85";
     return;
-  }
+   }
 
-  try {
-    micStream = await navigator.mediaDevices
-      .getUserMedia({audio:true});
+   page.answers[i]=word;
+   save();
+   sound("correct");
+   renderBuilder();
+  };
 
-    const mimeTypes = [
-      "audio/webm;codecs=opus",
-      "audio/webm",
-      "audio/mp4"
-    ];
+  $("wordBank").appendChild(btn);
+ });
 
-    const supported = mimeTypes.find(type =>
-      MediaRecorder.isTypeSupported(type)
-    );
-
-    recorder = supported
-      ? new MediaRecorder(micStream,{mimeType:supported})
-      : new MediaRecorder(micStream);
-
-    chunks = [];
-
-    if (audioURL) {
-      URL.revokeObjectURL(audioURL);
-      audioURL = null;
-    }
-
-    audioBlob = null;
-    $("audioPlayer").removeAttribute("src");
-    $("audioPlayer").load();
-    $("downloadAudio").disabled = true;
-
-    recorder.ondataavailable = e => {
-      if (e.data.size > 0) chunks.push(e.data);
-    };
-
-    recorder.onstop = () => {
-      const type = recorder.mimeType || "audio/webm";
-      audioBlob = new Blob(chunks,{type});
-      audioURL = URL.createObjectURL(audioBlob);
-      $("audioPlayer").src = audioURL;
-
-      $("downloadAudio").disabled = false;
-      $("recordStatus").textContent =
-        "✨ Rakaman siap! Tekan main untuk dengar semula.";
-
-      if (micStream) {
-        micStream.getTracks().forEach(t => t.stop());
-        micStream = null;
-      }
-    };
-
-    recorder.start();
-    recordStart = Date.now();
-    $("timer").textContent = "00:00";
-
-    timerInterval = setInterval(() => {
-      const seconds = Math.floor(
-        (Date.now()-recordStart)/1000
-      );
-      $("timer").textContent = formatTime(seconds);
-    },500);
-
-    $("startRecord").disabled = true;
-    $("stopRecord").disabled = false;
-
-    $("recordStatus").textContent =
-      "🔴 Sedang merakam. Baca cerita kamu!";
-
-  } catch(error) {
-    alert(
-      "Mikrofon tidak dapat digunakan. " +
-      "Semak kebenaran mikrofon dalam browser."
-    );
-
-    if (micStream) {
-      micStream.getTracks().forEach(t => t.stop());
-      micStream = null;
-    }
-  }
+ $("nextBuild").disabled=!complete(buildIndex);
+ $("nextBuild").textContent=buildIndex===2
+  ? "📖 Siapkan Buku"
+  : "Seterusnya →";
 }
 
-function stopRecording() {
-  if (recorder && recorder.state === "recording") {
-    recorder.stop();
-  }
+/* BUKU DIGITAL */
 
-  clearInterval(timerInterval);
-  $("startRecord").disabled = false;
-  $("stopRecord").disabled = true;
+function renderBook(){
+ const scene=sceneAt(bookIndex);
+ if(!scene)return;
+
+ $("bookNumber").textContent=(bookIndex+1)+" / 3";
+ $("bookImage").src=scene.image;
+ $("bookImage").alt=scene.name;
+
+ $("bookLines").innerHTML=linesAt(bookIndex)
+  .map(t=>"<p>"+safe(t)+"</p>").join("");
+
+ $("bookAuthor").textContent=
+  "Penulis: "+(author||"Penulis Cilik");
+
+ $("prevBook").disabled=bookIndex===0;
+ $("nextBook").disabled=bookIndex===2;
 }
 
-function downloadRecording() {
-  if (!audioBlob) return;
+/* RAKAMAN SUARA MURID */
 
-  const extension = audioBlob.type.includes("mp4")
-    ? "mp4" : "webm";
+let recorder=null;
+let stream=null;
+let chunks=[];
+let audioBlob=null;
+let audioURL=null;
+let timerID=null;
+let recordStart=0;
 
-  const link = document.createElement("a");
-  const url = URL.createObjectURL(audioBlob);
-
-  link.href = url;
-  link.download =
-    "Bacaan_Cerita_" +
-    (author.replace(/[^a-z0-9]/gi,"_") || "Murid") +
-    "." + extension;
-
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  setTimeout(() => URL.revokeObjectURL(url),1000);
+function clock(seconds){
+ const m=String(Math.floor(seconds/60)).padStart(2,"0");
+ const s=String(seconds%60).padStart(2,"0");
+ return m+":"+s;
 }
 
-/* ===================================
-   SIMPAN BUKU SEBAGAI PDF
-=================================== */
+async function startRecording(){
+ if(!navigator.mediaDevices?.getUserMedia ||
+    typeof MediaRecorder==="undefined"){
+  alert("Browser ini tidak menyokong rakaman mikrofon.");
+  return;
+ }
 
-function preparePrint() {
-  $("printPages").innerHTML = "";
+ musicBeforeRecord=musicWanted;
+ recording=true;
+ pauseMusic();
+ $("musicBtn").disabled=true;
 
-  [0,1,2].forEach(i => {
-    const scene = getScene(i);
-    const div = document.createElement("div");
-    div.className = "print-page";
-
-    div.innerHTML = `
-      <h1>📖 Buku Cerita Saya</h1>
-      <h2>Halaman ${i+1}: ${escapeHTML(scene.name)}</h2>
-      <img src="${scene.image}" alt="">
-      ${getLines(i).map(line =>
-        "<p>" + escapeHTML(line) + "</p>"
-      ).join("")}
-      <p class="byline">
-        Penulis: ${escapeHTML(author || "Penulis Cilik")}
-      </p>
-    `;
-
-    $("printPages").appendChild(div);
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({
+   audio:true
   });
+
+  const types=[
+   "audio/webm;codecs=opus",
+   "audio/webm",
+   "audio/mp4"
+  ];
+
+  const supported=types.find(t=>
+   MediaRecorder.isTypeSupported(t)
+  );
+
+  recorder=supported
+   ? new MediaRecorder(stream,{mimeType:supported})
+   : new MediaRecorder(stream);
+
+  chunks=[];
+
+  if(audioURL){
+   URL.revokeObjectURL(audioURL);
+   audioURL=null;
+  }
+
+  audioBlob=null;
+  $("recordPlayer").removeAttribute("src");
+  $("recordPlayer").load();
+  $("downloadAudio").disabled=true;
+
+  recorder.ondataavailable=e=>{
+   if(e.data.size)chunks.push(e.data);
+  };
+
+  recorder.onstop=()=>{
+   audioBlob=new Blob(chunks,{
+    type:recorder.mimeType||"audio/webm"
+   });
+
+   audioURL=URL.createObjectURL(audioBlob);
+   $("recordPlayer").src=audioURL;
+   $("downloadAudio").disabled=false;
+
+   $("recordStatus").textContent=
+    "✨ Rakaman siap! Dengar semula suara kamu.";
+
+   if(stream){
+    stream.getTracks().forEach(t=>t.stop());
+    stream=null;
+   }
+
+   recording=false;
+   $("musicBtn").disabled=false;
+
+   // Muzik tidak dimainkan semula secara
+   // automatik selepas rakaman.
+   // Murid boleh hidupkannya sendiri.
+   musicWanted=false;
+   refreshMusicButton();
+  };
+
+  recorder.start();
+  recordStart=Date.now();
+  $("timer").textContent="00:00";
+
+  timerID=setInterval(()=>{
+   $("timer").textContent=clock(
+    Math.floor((Date.now()-recordStart)/1000)
+   );
+  },500);
+
+  $("startRecord").disabled=true;
+  $("stopRecord").disabled=false;
+  $("recordStatus").textContent=
+   "🔴 Sedang merakam. Baca cerita kamu!";
+
+ }catch(e){
+  recording=false;
+  $("musicBtn").disabled=false;
+  $("recordStatus").textContent=
+   "Mikrofon tidak dapat digunakan.";
+
+  if(stream){
+   stream.getTracks().forEach(t=>t.stop());
+   stream=null;
+  }
+
+  alert("Benarkan penggunaan mikrofon dalam browser.");
+ }
 }
 
-function printStory() {
-  if (!allComplete()) {
-    alert("Lengkapkan ketiga-tiga halaman dahulu.");
-    return;
-  }
-
-  preparePrint();
-  setTimeout(() => window.print(),150);
+function stopRecording(){
+ if(recorder && recorder.state==="recording"){
+  recorder.stop();
+ }
+ clearInterval(timerID);
+ $("startRecord").disabled=false;
+ $("stopRecord").disabled=true;
 }
 
-/* ===================================
-   NAVIGASI DAN BUTANG
-=================================== */
+function downloadRecording(){
+ if(!audioBlob)return;
 
-$("startBtn").onclick = () => {
-  author = $("author").value.trim() || "Penulis Cilik";
-  saveDraft();
-  buildIndex = 0;
+ const ext=audioBlob.type.includes("mp4")
+  ? "mp4":"webm";
+
+ const url=URL.createObjectURL(audioBlob);
+ const a=document.createElement("a");
+
+ a.href=url;
+ a.download="Bacaan_Cerita_"+
+  (author.replace(/[^a-z0-9]/gi,"_")||"Murid")+
+  "."+ext;
+
+ document.body.appendChild(a);
+ a.click();
+ a.remove();
+
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function renderReading(){
+ $("readingText").innerHTML=[0,1,2].map(i=>
+  "<h4>Halaman "+(i+1)+"</h4>"+
+  linesAt(i).map(t=>"<p>"+safe(t)+"</p>").join("")
+ ).join("");
+}
+
+/* CETAK / SIMPAN PDF */
+
+function printStory(){
+ if(!allComplete()){
+  alert("Lengkapkan ketiga-tiga halaman dahulu.");
+  return;
+ }
+
+ $("printPages").innerHTML="";
+
+ [0,1,2].forEach(i=>{
+  const scene=sceneAt(i);
+  const div=document.createElement("div");
+  div.className="print-page";
+
+  div.innerHTML=
+   "<h1>📖 Buku Cerita Saya</h1>"+
+   "<h2>Halaman "+(i+1)+": "+safe(scene.name)+"</h2>"+
+   '<img src="'+scene.image+'" alt="">'+
+   linesAt(i).map(t=>"<p>"+safe(t)+"</p>").join("")+
+   '<p class="byline">Penulis: '+
+   safe(author||"Penulis Cilik")+"</p>";
+
+  $("printPages").appendChild(div);
+ });
+
+ const images=[...$("printPages").querySelectorAll("img")];
+
+ Promise.all(images.map(img=>{
+  if(img.complete)return Promise.resolve();
+
+  return new Promise(resolve=>{
+   img.onload=resolve;
+   img.onerror=resolve;
+  });
+ })).then(()=>window.print());
+}
+
+/* BUTANG DAN NAVIGASI */
+
+$("startBtn").onclick=()=>{
+ author=$("author").value.trim()||"Penulis Cilik";
+ save();
+ buildIndex=0;
+ renderBuilder();
+ show("builder");
+ playMusic();
+};
+
+$("nextBuild").onclick=()=>{
+ if(!complete(buildIndex))return;
+
+ if(buildIndex<2){
+  buildIndex++;
+  sound("page");
   renderBuilder();
-  showView("builder");
-};
-
-$("nextBuild").onclick = () => {
-  if (!pageComplete(buildIndex)) {
-    alert("Lengkapkan ayat dahulu.");
-    return;
-  }
-
-  if (buildIndex < 2) {
-    buildIndex++;
-    renderBuilder();
-  } else if (allComplete()) {
-    bookIndex = 0;
-    renderBook();
-    showView("bookView");
-  }
-};
-
-$("prevBuild").onclick = () => {
-  if (buildIndex > 0) {
-    buildIndex--;
-    renderBuilder();
-  }
-};
-
-$("clearWords").onclick = () => {
-  pages[buildIndex].answers = [null,null,null];
-  saveDraft();
-  renderBuilder();
-};
-
-$("hearSentence").onclick = () => {
-  const scene = getScene(buildIndex);
-
-  if (!scene) {
-    speak("Sila pilih gambar dahulu.");
-    return;
-  }
-
-  speak(getLines(buildIndex).join(" "));
-};
-
-$("prevBook").onclick = () => {
-  if (bookIndex > 0) {
-    bookIndex--;
-    renderBook();
-  }
-};
-
-$("nextBook").onclick = () => {
-  if (bookIndex < 2) {
-    bookIndex++;
-    renderBook();
-  }
-};
-
-$("readAloud").onclick = () => {
-  speak(getLines(bookIndex).join(" "));
-};
-
-$("editStory").onclick = () => {
-  buildIndex = 0;
-  renderBuilder();
-  showView("builder");
-};
-
-$("goRecord").onclick = () => {
-  renderReadingText();
-  showView("recordView");
-};
-
-$("backBook").onclick = () => {
-  bookIndex = 0;
+ }else if(allComplete()){
+  bookIndex=0;
   renderBook();
-  showView("bookView");
+  show("bookView");
+  sound("finish");
+ }
 };
 
-$("startRecord").onclick = startRecording;
-$("stopRecord").onclick = stopRecording;
-$("downloadAudio").onclick = downloadRecording;
-$("printBook").onclick = printStory;
-$("downloadBook").onclick = printStory;
-
-/* ===================================
-   MULA CERITA BAHARU
-=================================== */
-
-$("resetTop").onclick = () => {
-  const confirmReset = confirm(
-    "Mula cerita baharu? " +
-    "Pastikan buku dan rakaman suara " +
-    "telah dimuat turun dahulu."
-  );
-
-  if (!confirmReset) return;
-
-  if (recorder && recorder.state === "recording") {
-    stopRecording();
-  }
-
-  if (audioURL) {
-    URL.revokeObjectURL(audioURL);
-    audioURL = null;
-  }
-
-  audioBlob = null;
-  author = "";
-  pages = emptyPages();
-  buildIndex = 0;
-  bookIndex = 0;
-
-  $("author").value = "";
-  $("audioPlayer").removeAttribute("src");
-  $("audioPlayer").load();
-  $("downloadAudio").disabled = true;
-  $("timer").textContent = "00:00";
-
-  localStorage.removeItem(STORAGE_KEY);
-
-  if ("speechSynthesis" in window) {
-    speechSynthesis.cancel();
-  }
-
-  showView("welcome");
+$("prevBuild").onclick=()=>{
+ if(buildIndex>0){
+  buildIndex--;
+  sound("page");
+  renderBuilder();
+ }
 };
 
-/* ===================================
-   MULAKAN WEBSITE
-=================================== */
+$("clearBtn").onclick=()=>{
+ pages[buildIndex].answers=[null,null,null];
+ save();
+ renderBuilder();
+};
 
-loadDraft();
-showView("welcome");
+$("prevBook").onclick=()=>{
+ if(bookIndex>0){
+  bookIndex--;
+  sound("page");
+  renderBook();
+ }
+};
+
+$("nextBook").onclick=()=>{
+ if(bookIndex<2){
+  bookIndex++;
+  sound("page");
+  renderBook();
+ }
+};
+
+$("editStory").onclick=()=>{
+ buildIndex=0;
+ renderBuilder();
+ show("builder");
+ sound("page");
+};
+
+$("goRecord").onclick=()=>{
+ renderReading();
+ show("recordView");
+ sound("page");
+};
+
+$("backBook").onclick=()=>{
+ bookIndex=0;
+ renderBook();
+ show("bookView");
+ sound("page");
+};
+
+$("startRecord").onclick=startRecording;
+$("stopRecord").onclick=stopRecording;
+$("downloadAudio").onclick=downloadRecording;
+$("printBook").onclick=printStory;
+$("downloadBook").onclick=printStory;
+
+/* CERITA BAHARU */
+
+$("resetBtn").onclick=()=>{
+ if(!confirm(
+  "Mula cerita baharu? Pastikan hasil telah dimuat turun."
+ ))return;
+
+ if(recorder && recorder.state==="recording"){
+  stopRecording();
+ }
+
+ pauseMusic();
+
+ if(audioURL){
+  URL.revokeObjectURL(audioURL);
+  audioURL=null;
+ }
+
+ pages=newPages();
+ author="";
+ buildIndex=0;
+ bookIndex=0;
+ audioBlob=null;
+
+ $("author").value="";
+ $("recordPlayer").removeAttribute("src");
+ $("recordPlayer").load();
+ $("downloadAudio").disabled=true;
+ $("timer").textContent="00:00";
+
+ localStorage.removeItem(KEY);
+ show("welcome");
+};
+
+/* MULA */
+
+load();
+show("welcome");
 
 </script>
 </body>
 </html>
+
 
 
